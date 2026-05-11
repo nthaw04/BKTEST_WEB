@@ -1,7 +1,17 @@
-import { Mail, MapPin, Phone } from "lucide-react";
+"use client";
+
+import emailjs from "@emailjs/browser";
+import { Loader2, Mail, MapPin, Phone } from "lucide-react";
+import { useRef, useState } from "react";
 
 const MAP_EMBED_URL =
   "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.0263509592!2d106.67991149999999!3d10.885600199999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d7d252be7681%3A0x940fabfaa4d4ec0!2zMTkgVGjhuqFuaCBYdcOibiAzOSwgVGjhu5tpIEFuLCBI4buTIENow60gTWluaCA3MDAwMCwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1778479364292!5m2!1svi!2s";
+
+// ── Điền thông tin EmailJS của bạn vào đây ──────────────────────────────────
+const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!;
+const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!;
+const EMAILJS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!;
+// ────────────────────────────────────────────────────────────────────────────
 
 const CONTACT_ITEMS = [
   {
@@ -20,7 +30,31 @@ const CONTACT_ITEMS = [
   },
 ];
 
+type Status = "idle" | "loading" | "success" | "error";
+
 export const ContactSection = () => {
+  const formRef = useRef<HTMLFormElement>(null);
+  const [status, setStatus] = useState<Status>("idle");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!formRef.current) return;
+
+    setStatus("loading");
+    try {
+      await emailjs.sendForm(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        { publicKey: EMAILJS_PUBLIC_KEY },
+      );
+      setStatus("success");
+      formRef.current.reset();
+    } catch {
+      setStatus("error");
+    }
+  };
+
   return (
     <section className="bg-white px-6 py-6 lg:px-10 lg:py-8">
       <div className="mx-auto w-full max-w-6xl">
@@ -54,34 +88,53 @@ export const ContactSection = () => {
             </h1>
 
             <form
-              action="mailto:polytestvn@yahoo.com"
-              method="post"
-              encType="text/plain"
+              ref={formRef}
+              onSubmit={handleSubmit}
               className="mt-5 space-y-3"
             >
               <input
-                name="name"
+                name="from_name"
                 type="text"
                 placeholder="Họ và tên"
+                required
                 className="h-11 w-full rounded-full border border-zinc-200 px-5 text-sm text-zinc-900 outline-none transition-colors placeholder:text-zinc-400 focus:border-[#1B1F6E]"
               />
               <input
-                name="email"
+                name="from_email"
                 type="email"
                 placeholder="Email của bạn"
+                required
                 className="h-11 w-full rounded-full border border-zinc-200 px-5 text-sm text-zinc-900 outline-none transition-colors placeholder:text-zinc-400 focus:border-[#1B1F6E]"
               />
               <textarea
                 name="message"
                 placeholder="Nội dung tin nhắn..."
                 rows={4}
+                required
                 className="w-full resize-none rounded-3xl border border-zinc-200 px-5 py-3 text-sm text-zinc-900 outline-none transition-colors placeholder:text-zinc-400 focus:border-[#1B1F6E]"
               />
+
+              {status === "success" && (
+                <p className="text-sm font-medium text-green-600">
+                  ✓ Gửi thành công! Chúng tôi sẽ phản hồi sớm nhất có thể.
+                </p>
+              )}
+              {status === "error" && (
+                <p className="text-sm font-medium text-red-500">
+                  ✗ Có lỗi xảy ra. Vui lòng thử lại hoặc liên hệ trực tiếp qua
+                  email.
+                </p>
+              )}
+
               <button
                 type="submit"
-                className="inline-flex h-11 min-w-36 items-center justify-center rounded-full bg-[#171720] px-6 text-sm font-bold text-white transition-colors hover:bg-[#1B1F6E]"
+                disabled={status === "loading"}
+                className="inline-flex h-11 min-w-36 items-center justify-center gap-2 rounded-full bg-[#171720] px-6 text-sm font-bold text-white transition-colors hover:bg-[#1B1F6E] disabled:opacity-60"
               >
-                Gửi liên hệ
+                {status === "loading" && (
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                )}
+                {status === "loading" ? "Đang gửi..." : "Gửi liên hệ"}
               </button>
             </form>
           </div>
