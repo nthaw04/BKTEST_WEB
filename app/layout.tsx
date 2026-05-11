@@ -3,7 +3,7 @@ import "./globals.css";
 import { questrial } from "./fonts";
 
 export const metadata: Metadata = {
-  title: "CÔNG TY TNHH KHẢO SÁT NỀN MÓNG & KIỂM ĐỊNH XÂY DỰNG ĐÔNG TÂY",
+  title: "TRUNG TÂM NGHIÊN CỨU THỬ NGHIỆM BÁCH KHOA",
   description: "Kiến tạo công trình vững bền cùng giải pháp xây dựng cao cấp.",
 };
 
