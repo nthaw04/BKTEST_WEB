@@ -5,4 +5,5 @@ export { FieldSurveySection } from "./FieldSurveySection";
 export { ProjectsSection } from "./ProjectsSection";
 export { PartnersSection } from "./PartnersSection";
 export { CTASection } from "./CTASection";
+export { ContactSection } from "./ContactSection";
 export { FooterSection } from "./FooterSection";

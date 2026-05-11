@@ -14,7 +14,7 @@ const NAV_ITEMS = [
   { href: "#du-an", label: "Dự án tiêu biểu" },
   { href: "#doi-tac", label: "Sơ đồ tổ chức" },
   { href: "/cong-bo-nlhd-thi-nghiem", label: "CÔNG BỐ NLHĐ THÍ NGHIỆM" },
-  { href: "#lien-he", label: "Liên hệ" },
+  { href: "/contact", label: "Liên hệ" },
 ] as const;
 
 export const Header = () => {
