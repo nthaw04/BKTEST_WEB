@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { googleSansFlex, sfUIDisplay } from "./fonts";
+import { questrial } from "./fonts";
 
 export const metadata: Metadata = {
   title: "CÔNG TY TNHH KHẢO SÁT NỀN MÓNG & KIỂM ĐỊNH XÂY DỰNG ĐÔNG TÂY",
@@ -13,13 +13,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${sfUIDisplay.variable} ${googleSansFlex.variable}`}
-    >
+    <html lang="en" className={`${questrial.variable}`}>
       <body
         suppressHydrationWarning
-        className={`${sfUIDisplay.className} antialiased`}
+        className={`${questrial.className} antialiased`}
       >
         {children}
       </body>

@@ -1,12 +1,12 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { MapPin, Menu, Phone } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
-const COMPANY_NAME =
-  "CÔNG TY TNHH KHẢO SÁT NỀN MÓNG & KIỂM ĐỊNH XÂY DỰNG ĐÔNG TÂY";
+const COMPANY_NAME = "TRUNG TÂM NGHIÊN CỨU THỬ NGHIỆM BÁCH KHOA";
 
 const NAV_ITEMS = [
   { href: "#gioi-thieu", label: "Giới thiệu" },
@@ -21,29 +21,40 @@ export const Header = () => {
   const pathname = usePathname();
   const isSubPage = pathname !== "/";
   const tickerText =
-    "Đơn giá xây dựng: GIÁ THÔ 3.000.000 – 3.400.000 Đ/M2 • TRỌN GÓI 4.500.000 - 5.000.000 TRIỆU Đ/M";
+    "Trung thực, chính xác trong mọi phép thử • Không ngừng phát triển để trở thành đơn vị lớn mạnh về mọi mặt";
 
   return (
     <div className="sticky top-0 z-50 border-b border-black/10 bg-white shadow-sm">
       <div className="border-b border-black/10 bg-white">
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-6 px-4 py-4 sm:px-6 lg:px-10">
-          <Link href="/" className="flex min-w-0 items-center gap-3">
-            <span className="grid h-18 w-18 shrink-0 place-items-center border border-black/10 bg-white leading-none">
-              <span className="text-6xl font-black tracking-[-0.08em] text-[#d90b0b]">
-                <span className="text-[#009c2f]">P</span>N
-              </span>
-            </span>
+          <div className="flex min-w-0 items-center gap-3">
+            <Link href="/">
+              <Image
+                src="/logo.svg"
+                alt="Logo"
+                width={100}
+                height={100}
+                className="h-24 w-24 shrink-0"
+              />
+            </Link>
 
             <span className="min-w-0">
-              <span className="line-clamp-2 text-sm font-extrabold text-[#d90b0b] uppercase sm:text-lg">
-                {COMPANY_NAME}
-              </span>
-              <span className="mt-1 hidden items-start gap-1 text-xs text-zinc-700 sm:flex">
+              <Link href="/">
+                <span className="line-clamp-2 text-xl font-extrabold text-[#d90b0b] uppercase sm:text-lg">
+                  {COMPANY_NAME}
+                </span>
+              </Link>
+              <a
+                href="https://maps.app.goo.gl/8x4B7hvbNseBebet7?g_st=ic"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-1 hidden items-start gap-1 text-sm text-zinc-700 hover:text-[#1B1F6E] hover:underline sm:flex"
+              >
                 <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-zinc-500" />
-                123/3 Đỗ Xuân Hợp, P.Phước Long B, Tp Thủ Đức, Tp Hồ Chí Minh
-              </span>
+                19A Đường TX39, Khu phố 3, Phường Thới An, TP. Hồ Chí Minh
+              </a>
             </span>
-          </Link>
+          </div>
 
           <div className="hidden shrink-0 text-right md:block">
             <p className="text-xs font-bold uppercase text-zinc-800">
@@ -51,7 +62,7 @@ export const Header = () => {
             </p>
             <p className="mt-1 flex items-center justify-end gap-2 text-3xl leading-none font-black text-[#d90b0b]">
               <Phone className="h-5 w-5" />
-              0913 682 617
+              0909906869
             </p>
             <p className="mt-1 text-xs text-zinc-600">
               Tư vấn khảo sát, thí nghiệm và kiểm định 24/7
@@ -60,13 +71,13 @@ export const Header = () => {
         </div>
       </div>
 
-      <div className="bg-[#0d7a30]">
+      <div className="bg-[#1B1F6E]">
         <nav className="mx-auto h-12 w-full max-w-7xl px-4 sm:px-6 lg:px-10">
           <ul className="hidden h-12 w-full border-r border-white/15 md:grid md:grid-cols-7">
             <li className="border-l border-white/15">
               <a
                 href={isSubPage ? "/#top" : "#top"}
-                className="flex h-12 w-full items-center justify-center whitespace-nowrap bg-[#0b6b2a] px-1 text-center text-[10px] font-bold text-white uppercase lg:px-2 lg:text-[11px] xl:text-[12px]"
+                className="flex h-12 w-full items-center justify-center whitespace-nowrap bg-[#1B1F6E] px-1 text-center text-[10px] font-bold text-white uppercase lg:px-2 lg:text-[11px] xl:text-[12px]"
               >
                 Trang chủ
               </a>
@@ -86,7 +97,7 @@ export const Header = () => {
                     <a
                       href={resolvedHref}
                       className={`flex h-12 w-full items-center justify-center whitespace-nowrap px-1 text-center text-[10px] font-bold text-white uppercase transition-colors lg:px-2 lg:text-[11px] xl:text-[12px] ${
-                        isActive ? "bg-[#0b6b2a]" : "hover:bg-[#0b6b2a]"
+                        isActive ? "bg-[#1B1F6E]" : "hover:bg-[#1B1F6E]"
                       }`}
                     >
                       {item.label}
@@ -95,7 +106,7 @@ export const Header = () => {
                     <Link
                       href={resolvedHref}
                       className={`flex h-12 w-full items-center justify-center whitespace-nowrap px-1 text-center text-[10px] font-bold text-white uppercase transition-colors lg:px-2 lg:text-[11px] xl:text-[12px] ${
-                        isActive ? "bg-[#0b6b2a]" : "hover:bg-[#0b6b2a]"
+                        isActive ? "bg-[#1B1F6E]" : "hover:bg-[#1B1F6E]"
                       }`}
                     >
                       {item.label}
@@ -109,7 +120,7 @@ export const Header = () => {
           <div className="flex w-full items-center justify-between md:hidden">
             <a
               href={isSubPage ? "/#top" : "#top"}
-              className="inline-flex h-12 items-center bg-[#0b6b2a] px-4 text-[12px] font-bold tracking-wide text-white uppercase"
+              className="inline-flex h-12 items-center bg-[#1B1F6E] px-4 text-[12px] font-bold tracking-wide text-white uppercase"
             >
               Trang chủ
             </a>

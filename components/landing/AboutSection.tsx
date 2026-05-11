@@ -11,11 +11,16 @@ const VIEWPORT_HEIGHT = CARD_HEIGHT * 2 + CARD_GAP;
 const ABOUT_EYEBROW = "Về chúng tôi";
 const ABOUT_TITLE = "Giới thiệu";
 const ABOUT_PARAGRAPHS = [
-  "CÔNG TY TNHH KHẢO SÁT NỀN MÓNG VÀ KIỂM ĐỊNH XÂY DỰNG ĐÔNG TÂY được thành lập theo giấy chứng nhận đăng ký doanh nghiệp số 0304826616 do Sở kế hoạch đầu tư TP Hồ Chí Minh cấp lần đầu ngày 01 tháng 02 năm 2007, đăng ký thay đổi lần thứ 2 ngày 29 tháng 03 năm 2023.",
-  "Phòng thí nghiệm địa kỹ thuật đã được cấp giấy chứng nhận đủ điều kiện hoạt động thí nghiệm chuyên ngành xây dựng của Sở Xây dựng Tp HCM: Phòng thí nghiệm Địa kỹ thuật được Sở Xây Dựng cấp mã số dấu LAS - XD 58.031 theo quyết định số: 95/GCN-SXD-KT&VLXD ngày 01/11/2024). Bên cạnh đó Phòng thí nghiệm chuyên ngành xây dựng của Công ty đã xây dựng, áp dụng và được chứng nhận hệ thống quản lý phòng thí nghiệm theo các yêu cầu của tiêu chuẩn TCVN ISO/IEC 17025 : 2024.",
-  "Công ty rất sẵn sàng hợp tác phát triển trong nước, ngoài nước và quốc tế với các đối tác phù hợp, đồng thời sẵn sàng chia sẻ kinh nghiệm nghề nghiệp nhằm cùng nhau phát triển trên tiêu chí: “Phát triển bền vững – Nâng cao và đảm bảo chất lượng công trình”.",
-  "Trung tâm xin gửi lời cảm ơn chân thành đến các quý Chủ đầu tư, quý Ban quản lý, Đơn vị tư vấn giám sát, Nhà thầu thi công xây lắp và các đơn vị đối tác đã quan tâm, tạo điều kiện và hợp tác cùng Trung tâm. Trung tâm luôn mong muốn nhận được sự quan tâm, hợp tác và góp ý của Quý khách hàng trong thời gian tới.",
-  "Trân trọng cảm ơn và kính chào!",
+  "Trung tâm Nghiên cứu Thử nghiệm Bách Khoa được thành lập theo quyết định của Hội đồng sáng lập Trung tâm và Sở Khoa học và Công nghệ TP. Hồ Chí Minh số 139/ĐK-KHCN ngày 21/08/2006 về lĩnh vực hoạt động công nghệ:",
+  "Nghiên cứu, thiết kế, chế tạo thiết bị thử nghiệm xây dựng.",
+  "Tư vấn, thử nghiệm, kiểm định và đánh giá chất lượng công trình. Khảo sát địa chất, địa hình, thiết kế, thẩm định hồ sơ khảo sát thiết kế, tư vấn giám sát công trình, đào tạo nâng cao nghiệp vụ, chuyên môn về các lĩnh vực đăng ký.",
+  "Liên kết và hợp tác với các tổ chức trong và ngoài nước về lĩnh vực hoạt động khoa học công nghệ.",
+  "Ngày 03/07/2013, Trung tâm được Sở KH&CN TP. Hồ Chí Minh cấp giấy chứng nhận đăng ký hoạt động Khoa học và Công nghệ lần 2 do chuyển địa chỉ hoạt động.",
+  "Với phương châm “Trung thực, chính xác trong mọi phép thử”.",
+  "Phòng thí nghiệm vật liệu – địa chất và kiểm định của Trung tâm được Bộ Xây dựng cấp quyết định số 1564/QĐ-BXD ngày 15/11/2006 và quyết định cấp lại số 1116/QĐ-BXD ngày 10/09/2008 công nhận các phép thử vật liệu – địa chất và kiểm định công trình cùng với mã số chuyên ngành LAS-XD 474.",
+  "Với đội ngũ kỹ sư và cán bộ có bề dày kinh nghiệm trong khảo sát địa chất, địa hình, thiết kế, tư vấn, thí nghiệm kiểm định các dự án trọng điểm về cầu đường, thủy điện và xây dựng dân dụng… cùng với trang thiết bị hiện đại có độ chính xác cao. Hệ thống phòng thí nghiệm của Trung tâm bao gồm:",
+  "Trong xu thế hội nhập hiện nay, Trung tâm cam kết không ngừng phát triển để trở thành đơn vị lớn mạnh về mọi mặt. Chúng tôi rất mong muốn được hợp tác với Quý vị trong các lĩnh vực như khoan khảo sát địa chất trên mọi địa hình. Về vật liệu, Trung tâm sẵn sàng đặt phòng thí nghiệm tại công trường nếu được yêu cầu.",
+  "Trân trọng!",
 ] as const;
 
 const PROJECT_EYEBROW = "Năng lực triển khai";
@@ -54,15 +59,19 @@ const PROJECT_ITEMS = [
 ] as const;
 
 const ABOUT_HIGHLIGHTS = [
-  "CÔNG TY TNHH KHẢO SÁT NỀN MÓNG VÀ KIỂM ĐỊNH XÂY DỰNG ĐÔNG TÂY",
-  "0304826616",
-  "01 tháng 02 năm 2007",
-  "29 tháng 03 năm 2023",
-  "LAS - XD 58.031",
-  "95/GCN-SXD-KT&VLXD",
-  "01/11/2024",
-  "TCVN ISO/IEC 17025 : 2024",
-  "Phát triển bền vững – Nâng cao và đảm bảo chất lượng công trình",
+  "Trung tâm Nghiên cứu Thử nghiệm Bách Khoa",
+  "139/ĐK-KHCN",
+  "21/08/2006",
+  "03/07/2013",
+  "Trung thực, chính xác trong mọi phép thử",
+  "1564/QĐ-BXD",
+  "15/11/2006",
+  "1116/QĐ-BXD",
+  "10/09/2008",
+  "LAS-XD 474",
+  "19A đường TX39, KP3, P. Thạnh Xuân, Q.12, TP. HCM",
+  "08. 3716 6834",
+  "08. 3716 6835",
 ].sort((a, b) => b.length - a.length);
 
 const renderHighlightedParagraph = (paragraph: string) => {
